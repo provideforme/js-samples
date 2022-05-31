@@ -16,10 +16,12 @@
 
 // [START maps_react_map]
 import * as React from "react";
-import * as ReactDom from "react-dom";
+import * as ReactDom from "react-dom/client";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { createCustomEqual } from "fast-equals";
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
+
+const root = ReactDom.createRoot(document.getElementById("root"));
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -246,7 +248,7 @@ function useDeepCompareEffectForMaps(
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  ReactDom.render(<App />, document.getElementById("root"));
+  root.render(<App />);
 });
 
 // [END maps_react_map]
